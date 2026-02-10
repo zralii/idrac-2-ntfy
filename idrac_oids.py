@@ -25,6 +25,9 @@ TRAP_VARS = {
     "1.3.6.1.4.1.674.10892.5.1.1.11": "systemServiceTag",
     # Chassis service tag
     "1.3.6.1.4.1.674.10892.5.4.300.1": "chassisServiceTag",
+    # Alternative OIDs (used in some iDRAC versions/test traps)
+    "1.3.6.1.4.1.674.10892.5.4.300.1.6": "alertMessage",
+    "1.3.6.1.4.1.674.10892.5.4.300.1.8": "alertCurrentStatus",
 }
 
 # Severity mapping from iDRAC status codes
