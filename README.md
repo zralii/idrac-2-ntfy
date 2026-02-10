@@ -93,24 +93,6 @@ Check logs:
 docker logs idrac-2-ntfy
 ```
 
-## Docker Hub
-
-Pull from Docker Hub instead of building:
-
-```yaml
-services:
-  idrac-2-ntfy:
-    image: <username>/idrac-2-ntfy:latest
-    container_name: idrac-2-ntfy
-    restart: unless-stopped
-    ports:
-      - "162:162/udp"
-    env_file:
-      - .env
-    cap_add:
-      - NET_BIND_SERVICE
-```
-
 ## Running Without Docker
 
 ```bash
