@@ -131,14 +131,9 @@ def build_ntfy_message(parsed: dict, trap_oid: str, source_addr: str) -> tuple[s
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     lines = [
-        f"{emoji} {alert_msg}",
-        "",
         f"Host: {fqdn}",
         f"Service Tag: {svc_tag}",
         f"Severity: {severity_name}",
-        f"Message ID: {msg_id}",
-        f"Category: {category}",
-        f"Source: {source_addr}",
         f"Time: {timestamp}",
     ]
     message = "\n".join(lines)
@@ -146,8 +141,8 @@ def build_ntfy_message(parsed: dict, trap_oid: str, source_addr: str) -> tuple[s
     # Priority
     priority = NTFY_PRIORITY or SEVERITY_TO_NTFY_PRIORITY.get(severity_name, "default")
 
-    # Tags
-    tags = ["server", category.lower().replace(" ", "_")]
+    # Tags - just severity-based tags
+    tags = ["server"]
     if severity_name in ("critical", "nonRecoverable"):
         tags.append("rotating_light")
     elif severity_name == "nonCritical":
