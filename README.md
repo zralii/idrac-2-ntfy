@@ -1,3 +1,5 @@
+![img1](/img/ntfy_message.PNG)
+
 > **Note:** This project was developed with AI assistance.
 
 # idrac-2-ntfy
