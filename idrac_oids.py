@@ -19,6 +19,8 @@ TRAP_VARS = {
     "1.3.6.1.4.1.674.10892.5.3.1.3": "alertPreviousStatus",
     # Alert message ID
     "1.3.6.1.4.1.674.10892.5.3.1.4": "alertMessageID",
+    # Alert message arguments (additional message text)
+    "1.3.6.1.4.1.674.10892.5.3.1.5": "alertMessage",
     # System FQDN
     "1.3.6.1.4.1.674.10892.5.1.1.1": "systemFQDN",
     # System service tag
@@ -28,6 +30,9 @@ TRAP_VARS = {
     # Alternative OIDs (used in some iDRAC versions/test traps)
     "1.3.6.1.4.1.674.10892.5.4.300.1.6": "alertMessage",
     "1.3.6.1.4.1.674.10892.5.4.300.1.8": "alertCurrentStatus",
+    # Additional trap-specific OIDs
+    "1.3.6.1.4.1.674.10892.5.3.2.1.1": "alertMessage",
+    "1.3.6.1.4.1.674.10892.5.3.2.1.2": "alertCurrentStatus",
 }
 
 # Severity mapping from iDRAC status codes
@@ -97,7 +102,16 @@ TRAP_CATEGORIES = {
 
 def get_trap_category(trap_oid: str) -> str:
     """Resolve a trap OID to its human-readable category."""
-    return TRAP_CATEGORIES.get(trap_oid, f"iDRAC Alert ({trap_oid})")
+    # Try exact match first
+    if trap_oid in TRAP_CATEGORIES:
+        return TRAP_CATEGORIES[trap_oid]
+    
+    # Try prefix match (iDRAC appends notification IDs like .0.10395)
+    for known_oid, category in TRAP_CATEGORIES.items():
+        if trap_oid.startswith(known_oid + "."):
+            return category
+    
+    return f"iDRAC Alert ({trap_oid})"
 
 
 def get_severity(status_code: int) -> tuple[str, str]:
