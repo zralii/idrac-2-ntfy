@@ -40,6 +40,9 @@ SEVERITY_MAP = {
 # iDRAC trap OID to category mapping
 # These are the specific trap OIDs sent by iDRAC
 TRAP_CATEGORIES = {
+    # ---- Test trap ----
+    "1.3.6.1.4.1.674.10892.5.0.10395": "Test Alert",
+    "1.3.6.1.4.1.674.10892.5.3.2.29": "Test Alert",
     # ---- Temperature ----
     "1.3.6.1.4.1.674.10892.5.3.2.1": "Temperature Warning",
     "1.3.6.1.4.1.674.10892.5.3.2.2": "Temperature Critical",
@@ -84,8 +87,8 @@ TRAP_CATEGORIES = {
     # ---- RAID Controller ----
     "1.3.6.1.4.1.674.10892.5.3.2.27": "RAID Controller Warning",
     "1.3.6.1.4.1.674.10892.5.3.2.28": "RAID Controller Critical",
-    # ---- Test trap ----
-    "1.3.6.1.4.1.674.10892.5.3.2.29": "Test Alert",
+    # ---- Generic/Unknown Dell trap ----
+    "1.3.6.1.4.1.674.10892.5": "iDRAC Alert",
 }
 
 
