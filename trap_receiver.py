@@ -120,11 +120,11 @@ def build_ntfy_message(parsed: dict, trap_oid: str, source_addr: str) -> tuple[s
     category = get_trap_category(trap_oid)
     severity_name, emoji = determine_severity(parsed)
 
-    # Title (no emoji - HTTP headers must be ASCII)
-    title = f"{IDRAC_LABEL}: {category}"
+    # Title - just the alert message from iDRAC
+    alert_msg = parsed.get("alertMessage", "No message provided")
+    title = f"{IDRAC_LABEL}: {alert_msg}"
 
     # Body
-    alert_msg = parsed.get("alertMessage", "No message provided")
     msg_id = parsed.get("alertMessageID", "N/A")
     fqdn = parsed.get("systemFQDN", source_addr)
     svc_tag = parsed.get("systemServiceTag", parsed.get("chassisServiceTag", "N/A"))
