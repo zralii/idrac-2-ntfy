@@ -11,28 +11,21 @@ IDRAC_OID_PREFIX = "1.3.6.1.4.1.674.10892.5"
 
 # Common iDRAC trap variable OIDs
 TRAP_VARS = {
-    # Alert message string
-    "1.3.6.1.4.1.674.10892.5.3.1.1": "alertMessage",
-    # Alert current status
-    "1.3.6.1.4.1.674.10892.5.3.1.2": "alertCurrentStatus",
-    # Alert previous status
-    "1.3.6.1.4.1.674.10892.5.3.1.3": "alertPreviousStatus",
-    # Alert message ID
-    "1.3.6.1.4.1.674.10892.5.3.1.4": "alertMessageID",
-    # Alert message arguments (additional message text)
-    "1.3.6.1.4.1.674.10892.5.3.1.5": "alertMessage",
-    # System FQDN
-    "1.3.6.1.4.1.674.10892.5.1.1.1": "systemFQDN",
-    # System service tag
-    "1.3.6.1.4.1.674.10892.5.1.1.11": "systemServiceTag",
-    # Chassis service tag
-    "1.3.6.1.4.1.674.10892.5.4.300.1": "chassisServiceTag",
+    # Alert message ID (e.g., TST001)
+    "1.3.6.1.4.1.674.10892.5.3.1.1.0": "alertMessageID",
+    # Alert message text (the actual alert message)
+    "1.3.6.1.4.1.674.10892.5.3.1.2.0": "alertMessage",
+    # Alert current status (severity code)
+    "1.3.6.1.4.1.674.10892.5.3.1.3.0": "alertCurrentStatus",
+    # Service tag
+    "1.3.6.1.4.1.674.10892.5.3.1.4.0": "systemServiceTag",
+    # Chassis name
+    "1.3.6.1.4.1.674.10892.5.3.1.10.0": "chassisName",
+    # System FQDN/hostname
+    "1.3.6.1.4.1.674.10892.5.3.1.11.0": "systemFQDN",
     # Alternative OIDs (used in some iDRAC versions/test traps)
     "1.3.6.1.4.1.674.10892.5.4.300.1.6": "alertMessage",
     "1.3.6.1.4.1.674.10892.5.4.300.1.8": "alertCurrentStatus",
-    # Additional trap-specific OIDs
-    "1.3.6.1.4.1.674.10892.5.3.2.1.1": "alertMessage",
-    "1.3.6.1.4.1.674.10892.5.3.2.1.2": "alertCurrentStatus",
 }
 
 # Severity mapping from iDRAC status codes
